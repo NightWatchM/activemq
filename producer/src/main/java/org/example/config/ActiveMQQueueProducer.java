@@ -21,6 +21,7 @@ public class ActiveMQQueueProducer {
         System.out.println("queue发送的消息为：" + message + "  " + sdf.format(new Date()));
         jmsMessagingTemplate.convertAndSend(queue, message);
         System.out.println("消息发送成功" + "  " + sdf.format(new Date()));
+
     }
 
 }
