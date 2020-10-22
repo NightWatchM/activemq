@@ -1,0 +1,10 @@
+server:
+  port: 6666
+
+spring:
+  activemq:
+    broker-url: tcp://127.0.0.1:61616
+    user: admin
+    password: admin
+    queue-name: queue-test-mengyuan
+    topic-name: topic01-test
