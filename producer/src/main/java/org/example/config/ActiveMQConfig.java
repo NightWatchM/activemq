@@ -66,6 +66,7 @@ public class ActiveMQConfig {
         JmsTemplate jmsTemplate = new JmsTemplate();
         //非持久化消息需要配置explicitQosEnabled该属性为true，否则spring内部发送消息时将采用默认配置
         jmsTemplate.setExplicitQosEnabled(true);
+        //设置消息发送的持久化方式
         jmsTemplate.setDeliveryMode(DeliveryMode.PERSISTENT);
         jmsTemplate.setConnectionFactory(connectionFactory);
         return jmsTemplate;

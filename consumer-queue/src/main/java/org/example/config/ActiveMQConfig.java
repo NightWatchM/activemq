@@ -34,6 +34,11 @@ public class ActiveMQConfig {
         return new ActiveMQQueue(queue);
     }
 
+    /**
+     * 设置重试机制
+     *
+     * @return
+     */
     @Bean("redeliveryPolicy")
     public RedeliveryPolicy redeliveryPolicy() {
         RedeliveryPolicy redeliveryPolicy = new RedeliveryPolicy();
@@ -43,6 +48,7 @@ public class ActiveMQConfig {
         redeliveryPolicy.setMaximumRedeliveries(5);
         //初始重发延迟时间
         redeliveryPolicy.setInitialRedeliveryDelay(1000L);
+        //重发延迟时间，倍数为1时，生效
         redeliveryPolicy.setRedeliveryDelay(10000L);
         //重连时间间隔递增倍数，只有值大于1和启用useExponentialBackOff参数时才生效。
         redeliveryPolicy.setBackOffMultiplier(1);
@@ -73,9 +79,11 @@ public class ActiveMQConfig {
     @Bean("firstFactory")
     public SimpleJmsListenerContainerFactory firstFactory(@Qualifier("connectionFactory") ConnectionFactory connectionFactory) {
         SimpleJmsListenerContainerFactory factory = new SimpleJmsListenerContainerFactory();
-        factory.setPubSubDomain(false);
-        factory.setSessionTransacted(true);//关闭事务
+        factory.setPubSubDomain(false);//是否时发布订阅模式
+        factory.setSessionTransacted(true);//开启事务
         factory.setSessionAcknowledgeMode(1);//设置签收方式
+//        factory.setSessionTransacted(false);//关闭事务
+//        factory.setSessionAcknowledgeMode(4);//设置签收方式为手动签收
         factory.setConnectionFactory(connectionFactory);
         return factory;
     }

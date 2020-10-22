@@ -29,31 +29,31 @@ public class ActiveMQProducerController {
     @RequestMapping("/queue/test")
     @ResponseBody
     public void queueSendMsg() {
-        activeMQQueueProducer.sendMsg("111111111111", queue);
+        activeMQQueueProducer.sendMsg("queue==111111111111", queue);
     }
 
     @RequestMapping("/topic/test1")
     @ResponseBody
     public void topicSendMsg1() {
-        activeMQTopicProducer.sendMsg("111111111111", topic);
+        activeMQTopicProducer.sendMsg("topic==111111111111", topic);
     }
 
     @RequestMapping("/topic/test2")
     @ResponseBody
     public void topicSendMsg2() {
-        activeMQTopicProducer.sendMsg("222222222222", topic);
+        activeMQTopicProducer.sendMsg("topic==222222222222", topic);
     }
 
     @RequestMapping("/topic/test3")
     @ResponseBody
     public void topicSendMsg3() {
-        activeMQTopicProducer.sendMsg("333333333333", topic);
+        activeMQTopicProducer.sendMsg("topic==333333333333", topic);
     }
 
     @RequestMapping("/topic/test4")
     @ResponseBody
     public void topicSendMsg4() {
-        activeMQTopicProducer.sendMsg("444444444444", topic);
+        activeMQTopicProducer.sendMsg("topic==444444444444", topic);
     }
 
 }
